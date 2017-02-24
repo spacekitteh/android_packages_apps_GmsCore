@@ -36,7 +36,7 @@ $(THE_MICROG_APK): #$(call all-java-files-under, .)
 #	ln -s $(ANDROID_BUILD_TOP)/$(gmscore_out) $(ANDROID_BUILD_TOP)/$(gmscore_build)
 	echo "sdk.dir=$(ANDROID_HOME)" > $(gmscore_root)/local.properties
 	cd $(gmscore_root) && git submodule update --recursive --init
-	cd $(gmscore_root)/$(gmscore_dir) && JAVA_TOOL_OPTIONS="$(JAVA_TOOL_OPTIONS) -Dfile.encoding=UTF8" ../gradlew assemble$(TARGET_BUILD_TYPE) -PbuildDir=$(ANDROID_BUILD_TOP)/$(call local-generated-sources-dir)
+	cd $(gmscore_root)/$(gmscore_dir) && JAVA_TOOL_OPTIONS="$(JAVA_TOOL_OPTIONS) -Dfile.encoding=UTF8" ../gradlew assemble$(TARGET_BUILD_TYPE) -PbuildDir=$(ANDROID_BUILD_TOP)/$(call local-generated-sources-dir) --refresh-dependencies
 
 LOCAL_CERTIFICATE := platform
 LOCAL_PREBUILT_MODULE_FILE := $(THE_MICROG_APK)
